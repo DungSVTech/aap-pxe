@@ -1,20 +1,49 @@
-lang en_US.UTF-8
-keyboard --vckeymap=us --xlayouts='us'
-timezone Asia/Ho_Chi_Minh --isUtc
-rootpw --iscrypted $1$AQ20qBlP$5.EBeqB2.H7NFiLhKKYyu1
+#version=DEVEL
+# System authorization information
+auth --useshadow --enablemd5
+# Install OS instead of upgrade
 install
-url --noverifyssl --url="ftp://10.1.16.40/pub/
-# Network information
-network --bootproto=dhcp --device=ens192 --activate
-network --hostname=localhost.localdomain
-reboot
-text
-bootloader --append="rhgb quiet crashkernel=auto"
-zerombr
-clearpart --all --initlabel
-autopart
-authselect --passalgo=sha512 --useshadow
-user --name=ansible --groups=wheel --iscrypted --password==$6$tnq6jnkQXfz9IA.s$nh0AyoVVSdawh5xP9MumnHpTwqsddCEOwBBiRZX8BN3OoeBSaeK9mNpZwMW1ncRPEliYvED5JpOQGi82tCtZE/ 
-selinux --enforcing
+# Use CDROM installation media
+#cdrom
+# Use Network installation
+url --url="ftp://10.1.16.40/pub/"
+# Use graphical install
+graphical
+# Firewall configuration
 firewall --enabled
 firstboot --disable
+ignoredisk --only-use=sda
+# Keyboard layouts
+# old format: keyboard us
+# new format:
+keyboard --vckeymap=us --xlayouts='us'
+# System language
+lang en_US.UTF-8
+
+# Network information
+network  --bootproto=dhcp --device=ens192 --activate
+network  --hostname=localhost.localdomain
+# Reboot after installation
+reboot
+# Root password
+rootpw --iscrypted $1$AQ20qBlP$5.EBeqB2.H7NFiLhKKYyu1
+# System timezone
+timezone Asia/Ho_Chi_Minh --isUtc
+user --groups=wheel --name=dxd --password=$6$tnq6jnkQXfz9IA.s$nh0AyoVVSdawh5xP9MumnHpTwqsddCEOwBBiRZX8BN3OoeBSaeK9mNpZwMW1ncRPEliYvED5JpOQGi82tCtZE/ --iscrypted --gecos="dxd"
+# X Window System configuration information
+xconfig  --startxonboot
+# System bootloader configuration
+bootloader --append="rhgb quiet crashkernel=auto"
+autopart
+# Clear the Master Boot Record
+zerombr
+%packages
+@compat-libaries
+@core
+wget
+net-tools
+
+%end
+%addon com_redhat_kdump --enable --reserve-mb='auto'
+
+%end
