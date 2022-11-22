@@ -5,13 +5,13 @@ timeout 50
 MENU TITLE PXE Menu
 
 label linux
-  menu label ^Install system
+  menu label ^Install Centos7 KS
   menu default
   kernel rhel7/vmlinuz
-  append initrd=rhel7/initrd.img method=ftp://10.1.16.40/pub devfs=nomount
+  append initrd=rhel7/initrd.img inst.ks=ftp://10.1.16.40/pub/anaconda-ks.cfg
 
 label rescue
-  menu label ^Rescue installed system
+  menu label ^Rescue install
   kernel rhel7/vmlinuz
   append initrd=rhel7/initrd.img rescue
 
