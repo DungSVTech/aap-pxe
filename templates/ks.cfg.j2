@@ -1,7 +1,7 @@
 lang en_US.UTF-8
 keyboard --vckeymap=us --xlayouts='us'
 timezone Asia/Ho_Chi_Minh --isUtc
-rootpw {{ encrypted_passwd }} --iscrypted
+rootpw --iscrypted $1$AQ20qBlP$5.EBeqB2.H7NFiLhKKYyu1
 install
 url --noverifyssl --url="ftp://10.1.16.40/pub/
 # Network information
@@ -14,7 +14,7 @@ zerombr
 clearpart --all --initlabel
 autopart
 authselect --passalgo=sha512 --useshadow
-user --name=ansible --groups=wheel --iscrypted --password={{ encrypted_passwd }}
+user --name=ansible --groups=wheel --iscrypted --password==$6$tnq6jnkQXfz9IA.s$nh0AyoVVSdawh5xP9MumnHpTwqsddCEOwBBiRZX8BN3OoeBSaeK9mNpZwMW1ncRPEliYvED5JpOQGi82tCtZE/ 
 selinux --enforcing
 firewall --enabled
 firstboot --disable
