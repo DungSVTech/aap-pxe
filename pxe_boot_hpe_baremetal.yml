@@ -39,7 +39,7 @@
     - name: Restart system power gracefully
       community.general.redfish_command:
         category: Systems
-        command: PowerGracefulRestart
+        command: PowerOn
         baseuri: "10.1.17.3"
         username: "admin"
         password: "admin123"
