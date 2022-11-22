@@ -1,6 +1,8 @@
 ---
 - name: PXE Boot Dell Bare Metal
   hosts: 10.1.16.40
+  collections:
+    - community.general
   become: yes
   gather_facts: false
 
