@@ -26,6 +26,16 @@
     #     reset_type: "On"
     #   delegate_to: localhost
 
+    - name: Set one-time boot device to PXE
+      community.general.redfish_command:
+        category: Systems
+        command: SetOneTimeBoot
+        bootdevice: "Pxe"
+        baseuri: "10.1.17.3"
+        username: "admin"
+        password: "admin123"
+      delegate_to: localhost
+
     - name: Restart system power gracefully
       community.general.redfish_command:
         category: Systems
@@ -43,15 +53,15 @@
     #     onetime_boot_mode: "OneTimeBootSeq"
     #   delegate_to: localhost
 
-    - name: Set one-time boot device to {{ bootdevice }}
-      community.general.redfish_command:
-        category: Systems
-        command: SetOneTimeBoot
-        bootdevice: "Pxe"
-        baseuri: "10.1.17.3"
-        username: "admin"
-        password: "admin123"
-      delegate_to: localhost
+    # - name: Set one-time boot device to PXE
+    #   community.general.redfish_command:
+    #     category: Systems
+    #     command: SetOneTimeBoot
+    #     bootdevice: "Pxe"
+    #     baseuri: "10.1.17.3"
+    #     username: "admin"
+    #     password: "admin123"
+    #   delegate_to: localhost
 
     - name: Wait for Bare Metal to Boot Strap
       wait_for:
