@@ -8,7 +8,7 @@
     - name: Generate ks.cfg
       ansible.builtin.template:
         src: templates/ks.cfg.j2
-        dest: "{{ ks_cfg_path }}"
+        dest: /var/ftp/pub/anaconda-ks.cfg
         owner: root
         group: root
         mode: '0777'
