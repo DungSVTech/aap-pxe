@@ -1,0 +1,19 @@
+default menu.c32
+prompt 0
+timeout 50
+
+MENU TITLE PXE Menu
+
+label linux
+  menu label ^Install system
+  menu default
+  kernel rhel7/vmlinuz
+  append initrd=rhel7/initrd.img method=ftp://10.1.16.40/pub devfs=nomount
+
+label rescue
+  menu label ^Rescue installed system
+  kernel rhel7/vmlinuz
+  append initrd=rhel7/initrd.img rescue
+
+label local
+  menu label Boot from ^local drive
