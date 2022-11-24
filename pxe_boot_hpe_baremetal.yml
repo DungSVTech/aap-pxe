@@ -45,7 +45,7 @@
         command: SetOneTimeBoot
         boot_next: BiosSetup
         boot_override_mode: Legacy
-        #bootdevice: "Pxe"
+        bootdevice: "Pxe"
         baseuri: "10.1.17.3"
         username: "admin"
         password: "admin123"
