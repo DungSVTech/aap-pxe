@@ -26,25 +26,10 @@
     #     reset_type: "On"
     #   delegate_to: localhost
 
-    - name: Set multiple BootMode attributes
-      community.general.redfish_config:
-        category: Systems
-        command: SetBiosAttributes
-        bios_attributes:
-          BootMode: "Bios"
-          OneTimeBootMode: "Enabled"
-          BootSeqRetry: "Enabled"
-        baseuri: "10.1.17.3"
-        username: "admin"
-        password: "admin123"
-      delegate_to: localhost
-
-    - name: Set one-time boot device to PXE
+    - name: Set one-time boot device
       community.general.redfish_command:
         category: Systems
         command: SetOneTimeBoot
-        boot_next: BiosSetup
-        boot_override_mode: Legacy
         bootdevice: "Pxe"
         baseuri: "10.1.17.3"
         username: "admin"

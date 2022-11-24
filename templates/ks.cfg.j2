@@ -23,10 +23,10 @@ network  --hostname=centos7-viettel-aap
 reboot
 text
 # Root password
-rootpw --iscrypted $1$AQ20qBlP$5.EBeqB2.H7NFiLhKKYyu1
+rootpw --plaintext Admin@123
 # System timezone
 timezone Asia/Ho_Chi_Minh --isUtc
-user --groups=wheel --name=dxd --password=$6$tnq6jnkQXfz9IA.s$nh0AyoVVSdawh5xP9MumnHpTwqsddCEOwBBiRZX8BN3OoeBSaeK9mNpZwMW1ncRPEliYvED5JpOQGi82tCtZE/ --iscrypted --gecos="dxd"
+user --groups=wheel --name=dxd --password=Dung123456@
 # X Window System configuration information
 xconfig  --startxonboot
 # System bootloader configuration
