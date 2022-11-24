@@ -1,19 +1,20 @@
 default menu.c32
 prompt 0
-timeout 50
+timeout 300
+ONTIMEOUT local
 
-MENU TITLE PXE Menu
+menu tille #### PXE BOOT MENU ####
 
 label linux
-  menu label ^Install Centos7 KS
-  menu default
-  kernel rhel7/vmlinuz
-  append initrd=rhel7/initrd.img inst.ks=ftp://10.1.16.40/pub/anaconda-ks.cfg
+menu label ^1) Install Centos7 KS
+menu default
+kernel rhel7/vmlinuz
+append initrd=rhel7/initrd.img ip=dhcp inst.noverifyssl inst.ks=ftp://10.1.16.40/pub/anaconda-ks.cfg inst.text
 
 label rescue
-  menu label ^Rescue install
+  menu label ^Rescue installed system
   kernel rhel7/vmlinuz
   append initrd=rhel7/initrd.img rescue
 
 label local
-  menu label Boot from ^local drive
+menu label ^2) Boot from ^local drive

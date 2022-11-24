@@ -7,24 +7,21 @@ install
 #cdrom
 # Use Network installation
 url --url="ftp://10.1.16.40/pub/"
-# Use graphical install
-graphical
 # Firewall configuration
 firewall --enabled
 firstboot --disable
 ignoredisk --only-use=sda
 # Keyboard layouts
-# old format: keyboard us
-# new format:
 keyboard --vckeymap=us --xlayouts='us'
 # System language
 lang en_US.UTF-8
 
 # Network information
 network  --bootproto=dhcp --device=ens192 --activate
-network  --hostname=localhost.localdomain
+network  --hostname=centos7-viettel-aap
 # Reboot after installation
 reboot
+text
 # Root password
 rootpw --iscrypted $1$AQ20qBlP$5.EBeqB2.H7NFiLhKKYyu1
 # System timezone
@@ -34,16 +31,14 @@ user --groups=wheel --name=dxd --password=$6$tnq6jnkQXfz9IA.s$nh0AyoVVSdawh5xP9M
 xconfig  --startxonboot
 # System bootloader configuration
 bootloader --append="rhgb quiet crashkernel=auto"
-autopart
 # Clear the Master Boot Record
 zerombr
+clearpart --all --initlabel
+autopart
+authselect --passalgo=sha512 --useshadow
 %packages
 @compat-libaries
 @core
 wget
 net-tools
-
-%end
-%addon com_redhat_kdump --enable --reserve-mb='auto'
-
 %end
