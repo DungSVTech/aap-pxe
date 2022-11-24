@@ -5,7 +5,7 @@ ONTIMEOUT local
 
 menu tille #### PXE BOOT MENU ####
 
-label linux
+label 1
 menu label ^1) Install Centos7 KS
 menu default
 kernel rhel7/vmlinuz
@@ -16,5 +16,5 @@ label rescue
   kernel rhel7/vmlinuz
   append initrd=rhel7/initrd.img rescue
 
-label local
+label 2
 menu label ^2) Boot from ^local drive

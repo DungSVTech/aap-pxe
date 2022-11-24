@@ -30,7 +30,7 @@ user --groups=wheel --name=dxd --password=$6$tnq6jnkQXfz9IA.s$nh0AyoVVSdawh5xP9M
 # X Window System configuration information
 xconfig  --startxonboot
 # System bootloader configuration
-bootloader --append="rhgb quiet crashkernel=auto"
+bootloader --location=mbr
 # Clear the Master Boot Record
 zerombr
 clearpart --all --initlabel
