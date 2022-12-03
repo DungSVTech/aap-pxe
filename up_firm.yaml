@@ -1,0 +1,29 @@
+---
+- hosts: 10.1.17.3
+  connection: local
+  collections:
+    - community.general
+  gather_facts: true
+
+  tasks:
+  - name: Simple update ROM
+    community.general.redfish_command:
+      category: Update
+      command: SimpleUpdate
+      baseuri: "10.1.17.3"
+      username: "admin"
+      password: "admin123"
+      update_image_uri: http://10.1.16.40/hpe/U32_2.72_09_29_2022.signed.flash
+    register: msg
+
+  - name: Reboot system power
+    community.general.redfish_command:
+      category: Systems
+      baseuri: "10.1.17.3"
+      username: "admin"
+      password: "admin123"
+      command: PowerGracefulRestart
+  
+  - name: Debug
+    debug:
+      var: msg
